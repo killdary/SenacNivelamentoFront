@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,70 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.clickable {
+    cursor: pointer;
+    transition-duration: 0.5s;
+    transition: transform 0.5s;
+}
+
+.clickable:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    --ion-background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+    transition: background-color 1s;
+    transition: transform 0.5s;
+}
+
+.selected {
+    --ion-background-color: rgba(0, 0, 0, 0.4);
+}
+
+.background_system {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 40%;
+    background-color: rgba($color: #3880ff, $alpha: 0.8);
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+}
+
+.logo {
+    // font-family: "CreamCake" !important;
+}
+
+ion-card {
+    background-color: #ffffff;
+}
+
+ion-item {
+    padding: 0 5px;
+    --background: #ffffff;
+}
+
+.modal-recotar-imagem .modal-wrapper {
+    height: 730px;
+}
+
+:host ::ng-deep .datatable-header-cell {
+    font-weight: bold !important;
+}

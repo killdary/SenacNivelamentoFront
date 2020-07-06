@@ -1,0 +1,183 @@
+<app-nav-bar></app-nav-bar>
+
+<ion-content>
+
+  <section class="background_system">
+  </section>
+
+  <div class="container">
+    <ion-grid fixed>
+      <div>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{titulo}} de Funcionário</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+
+            <ion-grid class="ion-no-padding">
+              <form [formGroup]="form">
+                <ion-row>
+                  <ion-col size="3" style="text-align: center;" class="ion-padding">
+                    <h2 class="img_funcionario_titulo">Logo</h2>
+                    <img [src]="urlImagem" class="img_funcionario"><br>
+                    <ion-button (click)="alterarImagemModal()" expand="block" color="primary"  *ngIf="!desabilitarCampos">
+                      Trocar Image
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size="9">
+                    <ion-row>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating">Código</ion-label>
+                          <ion-input type="number" disabled  formControlName="id"></ion-input>
+                        </ion-item>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating" >Nome</ion-label>
+                          <ion-input type="text" formControlName="nome" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="nome"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating" >Cpf</ion-label>
+                          <ion-input type="text" formControlName="cpf" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="cpf"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating" >Login</ion-label>
+                          <ion-input type="text" formControlName="login" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="login"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating" >Senha</ion-label>
+                          <ion-input type="password" formControlName="senha" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="senha"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating" >Digite a senha novamente</ion-label>
+                          <ion-input type="password" formControlName="confirmarSenha" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <div class="error_container">
+                          <ng-container *ngIf="form.hasError('notSame') && !form.get('confirmarSenha').invalid">
+                            <div class="error_container__msg">
+                              <ion-icon name="information-circle-outline" class="error_container__msg__icon"></ion-icon>As senhas não conferem
+                            </div>
+                          </ng-container>
+                        </div>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="confirmarSenha"></app-validacao-input>
+                      </ion-col>                      
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating">Empresa</ion-label>
+                          <ion-select interface="popover" formControlName="empresa" [disabled]="desabilitarCampos" value="1">
+                            <ion-select-option *ngFor="let item of listaEmpresas" value="{{item.id}}">{{item.nome}}</ion-select-option>
+                          </ion-select>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="empresa">
+                        </app-validacao-input>
+                      </ion-col>                      
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating">Cargo</ion-label>
+                          <ion-select interface="popover" formControlName="cargo" [disabled]="desabilitarCampos">
+                            <ion-select-option *ngFor="let item of listaCargos" value="{{item.id}}">{{item.nome}}</ion-select-option>
+                          </ion-select>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="cargo">
+                        </app-validacao-input>
+                      </ion-col>
+                      <ion-col size="12">
+                        <ion-item>
+                          <ion-label position="floating" >Logradouro</ion-label>
+                          <ion-input type="text" formControlName="logradouro" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="logradouro"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-item>
+                          <ion-label position="floating" >Número</ion-label>
+                          <ion-input type="number" formControlName="numero" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="numero"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-item>
+                          <ion-label position="floating" >Bairro</ion-label>
+                          <ion-input type="text" formControlName="bairro" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="bairro"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-item>
+                          <ion-label position="floating" >Cep</ion-label>
+                          <ion-input type="text" formControlName="cep" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="cep"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-item>
+                          <ion-label position="floating" >Cidade</ion-label>
+                          <ion-input type="text" formControlName="cidade" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="cidade"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-item>
+                          <ion-label position="floating" >Estado</ion-label>
+                          <ion-input type="text" formControlName="estado" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="estado"></app-validacao-input>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-item>
+                          <ion-label position="floating" >País</ion-label>
+                          <ion-input type="text" formControlName="pais" [disabled]="desabilitarCampos"></ion-input>
+                        </ion-item>
+                        <app-validacao-input [form]='form' [mensagem_validacao]="mensagens_validacao" campo="pais"></app-validacao-input>
+                      </ion-col>
+
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating">Data Criação</ion-label>
+                          <ion-datetime displayFormat="DD/MM/YYYY" done-text="Confirmar" cancelText="Cancelar" formControlName="dataCriacao" disabled>    
+                            </ion-datetime>                        
+                        </ion-item>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-item>
+                          <ion-label position="floating">Data Atualização</ion-label>
+                          <ion-datetime displayFormat="DD/MM/YYYY" done-text="Confirmar" cancelText="Cancelar" formControlName="dataUltimaAtualizacao" disabled>
+                            </ion-datetime>
+                        </ion-item>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="12" style="position: relative; text-align: right; margin-top: 10px;">
+                    <ion-button color="success" (click)="submit()"  *ngIf="!desabilitarCampos">
+                      Salvar
+                    </ion-button>
+                    <ion-button color="danger" [routerLink]="['/funcionarioListagem']" *ngIf="isAdministrador">
+                      Cancelar
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </form>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-grid>
+  </div>
+
+
+</ion-content>

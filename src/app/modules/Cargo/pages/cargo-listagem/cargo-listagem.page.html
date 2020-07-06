@@ -1,0 +1,82 @@
+<app-nav-bar></app-nav-bar>
+<ion-content>
+    <section class="background_system">
+    </section>
+  
+    <div class="container">
+  
+      <ion-grid fixed>
+        <div>
+          <ion-card>
+            <ion-card-header style="border: 1px, solid #CCC;">
+              <ion-grid class="ion-no-padding">
+                <ion-row>
+                  <ion-col size-lg="6" size-md="3">
+                  </ion-col>
+                  <ion-col size-lg="4" size-md="6">
+                    <ion-item>
+                      <ion-label position="floating">Nome</ion-label>
+                      <ion-input [(ngModel)]="filtro"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size-lg="2" size-md="3" class="col-pesquisar">
+                    <ion-button class="col-pesquisar__btn-pesquisar" expand="block" color="primary" (click)="filtroPagina()">
+                      Pesquisar
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-header>
+          </ion-card>
+  
+          <ion-card>
+            <ion-card-content>
+              <ion-fab vertical="top" horizontal="end" slot="fixed">
+                <ion-fab-button [routerLink]="['/cargoDetalhes']"  *ngIf="isAdministrador">
+                  <ion-icon name="add" routerLinkActive="router-link-active"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+              <ngx-datatable 
+                [ngClass]="'material'" 
+                [rowHeight]="'auto'" 
+                [columns]="colunas"
+                [columnMode]="'force'" 
+                [sortType]="'multi'" 
+                [headerHeight]="'auto'" 
+                [footerHeight]="'auto'" 
+                [externalPaging]="true"
+                [rows]="dadosTabela.data" 
+                [count]="dadosTabela.count"
+                [messages]="mensagens"
+                [offset]="pagina"
+                [limit]="limitePaginas"
+                (page)="paginacao($event)">
+  
+                <ngx-datatable-column name="Nome"></ngx-datatable-column>        
+                <ngx-datatable-column name="Sigla"></ngx-datatable-column>    
+                <ngx-datatable-column prop="nivelAcesso" name="Nível de Acesso" [sortable]="false" [draggable]="false">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{formatarNivel(value)}}
+                  </ng-template>
+                </ngx-datatable-column> 
+                <ngx-datatable-column name="Ações" [sortable]="false">
+                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <ion-button size="small" fill="clear" color="system"  [routerLink]="['/cargoDetalhes/'+row.id]" [state]="{operacao: 'visualizar'}" *ngIf="isAdministrador">
+                      <ion-icon name="eye"></ion-icon>
+                    </ion-button>
+                    <ion-button size="small" fill="clear" color="warning" [routerLink]="['/cargoDetalhes/'+row.id]" [state]="{operacao: 'editar'}" *ngIf="isAdministrador">
+                      <ion-icon name="pencil"></ion-icon>
+                    </ion-button>
+                    <ion-button size="small" fill="clear" color="danger" (click)="apresentarAlertaDelecao(row)">
+                      <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                  </ng-template>
+                </ngx-datatable-column>
+              </ngx-datatable>
+            </ion-card-content>
+          </ion-card>
+  
+        </div>
+      </ion-grid>
+    </div>
+</ion-content>

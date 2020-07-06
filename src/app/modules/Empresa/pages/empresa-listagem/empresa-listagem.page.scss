@@ -1,0 +1,15 @@
+.col-pesquisar{
+    position: relative;
+
+    &__btn-pesquisar {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    
+}
+
+
+:host ::ng-deep .datatable-header-cell {
+    font-weight: bold !important;
+}

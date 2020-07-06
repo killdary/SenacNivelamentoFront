@@ -1,0 +1,14 @@
+.error_container{
+  
+    &__msg{
+      color: var(--ion-color-danger);
+      padding-left: 5px;
+      padding-top: 5px;
+      vertical-align: middle;
+  
+      &__icon{
+        vertical-align: middle;
+        padding: 0 2px;
+      }
+    }
+  }

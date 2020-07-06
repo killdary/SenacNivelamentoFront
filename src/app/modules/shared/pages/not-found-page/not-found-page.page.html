@@ -1,0 +1,29 @@
+<ion-content class="ion-padding">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <p class="text-center">
+          <ion-icon name="alert-circle"
+            style="color: var(--ion-color-danger); font-size: 15rem; padding: 0; margin: 0;"></ion-icon>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <H1 class="text-center" style="font-size: 6rem;" color="primary">404</H1>
+        <H1 class="text-center" color="primary">Página não encontrada!</H1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="4" size-sm="1"></ion-col>
+      <ion-col size-md="4" size-sm="10" class="ion-align-self-center">
+        <ion-button [routerLink]="['/']" routerLinkActive="router-link-active"  expand="block" color="primary" style="text-transform: uppercase;">
+          Voltar para página Inicial
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-col size-md="4" size-sm="1"></ion-col>
+  </ion-grid>
+
+
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{tituloModal}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>{{operacao}}</h1>
+  <ion-list>
+    <ion-item *ngFor="let item of notifications">    
+      <ion-label>
+        <p class="adicional-item">{{item.value}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="width: 100%;" class="text-right ion-padding">
+      <ion-button  color="danger" (click)="fecharModal()">Fechar</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

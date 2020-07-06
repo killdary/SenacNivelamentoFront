@@ -1,0 +1,25 @@
+.background_system {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 40%;
+    background-color: rgba($color: #29335c, $alpha: 0.8);
+    z-index: 1;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    text-align: center;
+    font-weight: bold;
+  }  
+
+  .menu {
+    --background: #FFFFFF;
+  }
+
+  ion-list{
+    background-color: #FFFFFF;
+  }
